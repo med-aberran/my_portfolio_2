@@ -143,6 +143,38 @@ body {
   box-shadow: 0 20px 40px rgba(102,126,234,0.5);
 }
 
+/* le nom a la tete de botton CV */
+.cv-download::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(-50%) translateY(4px);
+  font-family: var(--mono);
+}
+.cv-download:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* pour le mode le theme clair*/
+[data-theme="light"] .cv-download {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  box-shadow: 0 10px 30px rgba(79,70,229,0.4);
+}
+
 /* ── CANVAS BACKGROUND ── */
 #canvas {
   position: fixed;
@@ -202,6 +234,47 @@ body {
   width: 1px;
   background: linear-gradient(180deg, transparent, var(--accent), transparent);
   opacity: 0.4;
+}
+
+/* pour le mode le theme clair*/
+[data-theme="light"] .sidebar {
+  background: rgba(255,255,255,0.97);
+  border-right: 1px solid rgba(79,70,229,0.15);
+}
+
+[data-theme="light"] .sidebar-name {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .nav-label {
+  color: #64748b;
+}
+
+[data-theme="light"] .nav-item:hover .nav-label,
+[data-theme="light"] .nav-item.active .nav-label {
+  color: #1e293b;
+}
+
+[data-theme="light"] .social-link {
+  background: #f1f5f9;
+  border-color: rgba(79,70,229,0.2);
+  color: #475569;
+}
+
+[data-theme="light"] .social-link:hover {
+  background: rgba(79,70,229,0.1);
+  border-color: #4f46e5;
+  color: #1e293b;
+}
+
+[data-theme="light"] .location {
+  color: #475569;
+}
+
+[data-theme="light"] .sidebar-title {
+  color: #7c3aed;
 }
 
 /* PHOTO */
@@ -1065,9 +1138,22 @@ body {
       <div class="sec-title">About</div>
       <div class="sec-underline"></div>
       <p class="about-text">
-        Etudiant en 1ere annee du DUT <strong> Informatique et Developpement Digital</strong> a l'Ecole Superieure de Technologie de Tetouan — Universite Abdelmalek Essaadi. Passionne par la programmation, la creation de solutions digitales et les nouvelles technologies.<br><br>
-        Je possede des bases solides en <strong>Python, C, HTML</strong> et en bases de donnees relationnelles. J'ai deja realise 4 projets concrets dont un site e-commerce complet avec dashboard statistique. Serieux, curieux et autonome, je recherche un <strong>stage d'initiation de 4 semaines</strong> pour mettre en pratique mes competences dans un environnement professionnel stimulant.
-      </p>
+        <p class="about-text">
+          Étudiant en première année du DUT <strong>Informatique et Développement Digital</strong>,
+          passionné par la <strong>programmation</strong>, le développement de
+          solutions digitales et les nouvelles technologies.<br>
+
+          Je possède des bases solides en <strong>Python</strong>, <strong>C / C++</strong>,
+          <strong>HTML / CSS</strong> et en bases de données relationnelles.<br>
+
+          J’ai réalisé plusieurs projets concrets, dont un
+          site e-commerce complet avec dashboard statistique.<br>
+
+          Sérieux, curieux et autonome, je recherche un
+          <strong>stage d’initiation de 4 semaines</strong>
+          pour développer mes compétences dans un environnement professionnel.<br>
+
+        </p> 
     </section>
 
     <!-- PROJECTS -->
@@ -1187,7 +1273,10 @@ body {
             <div class="card-date">2025</div>
           </div>
         </div>
-        <div class="card-desc">Baccalaureat obtenu en Sciences Physiques — base scientifique solide pour les etudes en informatique et mathematiques.</div>
+        <div class="card-desc">  Obtention du baccalauréat en filière Sciences Physiques, 
+          avec une solide formation scientifique en mathématiques, physique 
+          et logique analytique, constituant une excellente base pour les études 
+          en informatique et développement digital.</div>
       </div>
 
     </section>
@@ -1204,11 +1293,11 @@ body {
             <div class="skill-item" data-level="★★★★☆">Python</div>
             <div class="skill-item" data-level="★★★★☆">Git / GitHub</div>
             <div class="skill-item" data-level="★★★☆☆">C / C++</div>
-            <div class="skill-item" data-level="★★☆☆☆">HTML / CSS</div>
             <div class="skill-item" data-level="★★★☆☆">SQL</div>
-            
+            <div class="skill-item" data-level="★★☆☆☆">HTML / CSS</div>
           </div>
         </div>
+        
         <div>
           <div class="skill-group-title"><span class="sgt-dot"></span>OUTILS & ENVIRONNEMENTS :</div>
           <div class="skills-row">
@@ -1239,7 +1328,6 @@ body {
           <div class="skills-row">
             <div class="skill-item">Communication</div>
             <div class="skill-item">Travail en equipe</div>
-            <div class="skill-item">Rigueur</div>
             <div class="skill-item">Autonomie</div>
             <div class="skill-item">Resolution de problemes</div>
             <div class="skill-item">Adaptabilite</div>
@@ -1598,6 +1686,5 @@ document.addEventListener('click', e => {
 
 
 </script>
-
 </body>
 </html>
